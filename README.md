@@ -28,6 +28,7 @@ A modern, responsive single-page website for JK Hydraulic & Engineering, a busin
 ```text
 jkhydraulic/
 ├── jk.html             # Main website page
+├── index.html          # Local-hosting and static-hosting entry point
 ├── style.css           # Layout, responsive styles, themes, and animations
 ├── script.js           # Original JavaScript file
 ├── script_fixed.js     # Active JavaScript interactions and theme logic
@@ -44,10 +45,10 @@ Because this is a static website, it can be opened directly in a browser. A loca
 python -m http.server 8080
 ```
 
-Then open:
+Then open the site root:
 
 ```text
-http://localhost:8080/jk.html
+http://localhost:8080/
 ```
 
 ### Using VS Code
@@ -110,7 +111,7 @@ For GitHub Pages:
 3. Select the `main` branch as the deployment source.
 4. Save the configuration.
 
-The entry page is `jk.html`. If the hosting provider expects `index.html`, rename `jk.html` to `index.html` and update any related links if needed.
+The root `index.html` forwards visitors to `jk.html`, so the site opens from the hosting root without requiring a specific page URL.
 
 ## Notes
 
