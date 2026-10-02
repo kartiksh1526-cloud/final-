@@ -1724,8 +1724,14 @@ footer{
     .quote-wrapper,
     .contact,
     .footer-top{
-        grid-template-columns:1fr;
+        grid-template-columns:minmax(0,1fr);
         gap:50px;
+    }
+
+    .quote-wrapper,
+    .quote-text,
+    .quote-form{
+        min-width:0;
     }
 
     .product-grid{
@@ -1785,9 +1791,13 @@ footer{
     }
 
     .hero-machine{
-        height:430px;
-        transform:scale(.72);
-        transform-origin:center top;
+        height:350px;
+        margin-top:10px;
+        overflow:hidden;
+    }
+
+    .machine-scene{
+        transform:translate(-50%,-50%) scale(.58);
     }
 
     .stats{
@@ -1833,6 +1843,12 @@ footer{
 
     .quote-form{
         padding:25px;
+    }
+
+    .quote-form input,
+    .quote-form select,
+    .quote-form textarea{
+        min-width:0;
     }
 
     .form-row{

@@ -31,10 +31,24 @@ const menuBtn = document.getElementById("menuBtn");
 const navbar = document.querySelector(".navbar");
 
 if (menuBtn && navbar) {
-  menuBtn.addEventListener("click", () => navbar.classList.toggle("open"));
+  const closeMenu = () => {
+    navbar.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.setAttribute("aria-label", "Open navigation menu");
+  };
+
+  menuBtn.addEventListener("click", () => {
+    const isOpen = navbar.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", String(isOpen));
+    menuBtn.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+  });
 
   document.querySelectorAll(".navbar a").forEach((link) => {
-    link.addEventListener("click", () => navbar.classList.remove("open"));
+    link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeMenu();
   });
 }
 
@@ -79,12 +93,14 @@ if (machineScene) {
 
       const rotateY = (x - centerX) / 45;
       const rotateX = (centerY - y) / 45;
+      const machineScale = window.matchMedia("(max-width: 600px)").matches ? 0.58 : 1;
 
-      machineScene.style.transform = `translate(-50%,-50%) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      machineScene.style.transform = `translate(-50%,-50%) scale(${machineScale}) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     });
 
     hero.addEventListener("mouseleave", () => {
-      machineScene.style.transform = "translate(-50%,-50%) rotateX(0deg) rotateY(0deg)";
+      const machineScale = window.matchMedia("(max-width: 600px)").matches ? 0.58 : 1;
+      machineScene.style.transform = `translate(-50%,-50%) scale(${machineScale}) rotateX(0deg) rotateY(0deg)`;
     });
   }
 }

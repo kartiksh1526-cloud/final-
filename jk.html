@@ -52,7 +52,7 @@
     </a>
 
 
-    <nav class="navbar">
+    <nav class="navbar" id="site-navigation">
 
         <a href="#home" class="active">Home</a>
         <a href="#about">About</a>
@@ -74,7 +74,11 @@
         <span>Light</span>
     </button>
 
-    <button class="menu-btn" id="menuBtn">
+    <button class="menu-btn"
+            id="menuBtn"
+            aria-label="Open navigation menu"
+            aria-controls="site-navigation"
+            aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
